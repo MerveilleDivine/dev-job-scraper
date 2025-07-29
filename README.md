@@ -31,8 +31,8 @@ A powerful Python script that scrapes remote developer job listings across multi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/Dev_Job_Scraper.git
-   cd Dev_Job_Scraper
+   git clone [https://github.com/yourus/dev_Job_Scraper.git](https://github.com/MerveilleDivine/Dev-Job-Scaper.git)
+   cd dev_job_scraper
 ````
 
 2. (Optional) Create and activate a virtual environment:
