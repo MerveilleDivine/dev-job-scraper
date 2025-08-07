@@ -1,64 +1,79 @@
-Sure! Here’s a polished, professional README.md for your multi-source remote dev job scraper project:
+# 🌎 Remote Job Search App (API & GUI)
 
-````markdown
-# Multi-Source Remote Developer Job Scraper
-
-A powerful Python script that scrapes remote developer job listings across multiple popular remote job boards, consolidates the results, and exports them into a clean CSV file for easy browsing and analysis.
+A modern Python app to search remote jobs worldwide using the [JSearch API](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/).  
+Includes a Gradio web interface and CSV export.  
+No scraping, no audio dependencies, just fast API-powered job search!
 
 ---
 
 ## Features
 
-- Scrapes jobs from **7+ major remote developer job boards**, including:
-  - RemoteOK
-  - We Work Remotely
-  - Remote.co
-  - JustRemote.co
-  - Remotive.io
-  - Working Nomads
-  - Jobspresso
-
-- Filters jobs by user-specified keyword (e.g., "python", "react", "full stack")
-- Extracts key job details: title, company, posting date, job link, and source site
-- Deduplicates results to avoid repeated listings across sites
-- Outputs results in a well-structured CSV file named `<keyword>_jobs.csv`
-- Designed for ease of extension to add more sources or features
+- **Search remote jobs worldwide** (or by country) using the JSearch API
+- **Filter by keywords** (e.g. `python`, `react`, `dubai`)
+- **Set number of result pages** to fetch
+- **Export results to CSV**
+- **Easy-to-use Gradio web GUI**
+- **Command-line interface (CLI) also available**
 
 ---
 
 ## Installation
 
-1. Clone the repository:
-
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/Dev_Job_Scraper.git
    cd Dev_Job_Scraper
-````
-
-2. (Optional) Create and activate a virtual environment:
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
 
-3. Install required dependencies:
+2. **(Optional) Create and activate a virtual environment:**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On Mac/Linux:
+   source venv/bin/activate
+   ```
 
+3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
+
+4. **Set your RapidAPI key:**
+   - Create a `.env` file in the project root:
+     ```
+     API_KEY=your_rapidapi_key_here
+     ```
+   - Get your key from [RapidAPI JSearch](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/).
 
 ---
 
 ## Usage
 
-Run the scraper with the `--keyword` argument to specify the job search term:
+### Gradio Web App
 
+Launch the GUI:
 ```bash
-python scraper.py --keyword python
+python code/app.py
 ```
+- Enter your keywords (e.g. `remote python`), number of pages, and (optionally) a 2-letter country code (e.g. `us`, `gb`, `ae`).  
+- Leave country blank for worldwide search.
+- View results in the browser and download as CSV.
 
-This will search all supported job boards for remote developer jobs related to “python” and save the results to `python_jobs.csv`.
+### Command-Line Interface
+
+Run:
+```bash
+python code/scraper.py "remote python" --pages 2 --country ""
+```
+- Replace `"remote python"` with your keywords.
+- Use `--pages` to set number of result pages (default: 1).
+- Use `--country` for a 2-letter country code (default: `us`). Use `""` for worldwide.
+
+Example for Dubai jobs:
+```bash
+python code/scraper.py "python dubai" --country ae
+```
 
 ---
 
@@ -66,46 +81,41 @@ This will search all supported job boards for remote developer jobs related to �
 
 The CSV file contains columns:
 
-| title            | company     | link                                                             | date       | source         |
-| ---------------- | ----------- | ---------------------------------------------------------------- | ---------- | -------------- |
-| Backend Engineer | Acme Corp   | [https://remoteok.com/12345](https://remoteok.com/12345)         | 2025-07-29 | RemoteOK       |
-| Frontend Dev     | Startup XYZ | [https://weworkremotely.com/678](https://weworkremotely.com/678) | 2025-07-29 | WeWorkRemotely |
-| ...              | ...         | ...                                                              | ...        | ...            |
+| Job Title        | Company     | Location | Link                                   | Date Posted          |
+|------------------|------------|----------|----------------------------------------|----------------------|
+| Backend Engineer | Acme Corp   | Dubai    | https://...                            | 2025-07-29T12:34:56Z |
+| Frontend Dev     | Startup XYZ | London   | https://...                            | 2025-07-29T09:12:34Z |
+| ...              | ...         | ...      | ...                                    | ...                  |
 
 ---
 
-## Extending the Scraper
+## Configuration
 
-* Add new job boards by implementing new scraping functions following existing patterns.
-* Improve data cleaning and filtering (e.g., filter jobs posted in the last 7 days).
-* Integrate with databases or job alert systems.
-* Add CLI options for output formats (JSON, Excel, etc.).
+- **API Key:**  
+  Set your RapidAPI key in a `.env` file as `API_KEY=...`.
+
+- **Country Codes:**  
+  Use [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) (e.g. `us`, `gb`, `ae`).  
+  Leave blank for worldwide.
 
 ---
 
 ## Limitations
 
-* Some job boards use JavaScript or APIs that require authentication, limiting scraping ability.
-* Site structure changes may break scrapers; maintenance required.
-* No pagination implemented—scrapes only first page of results.
-* Intended for educational and personal use respecting target sites' terms.
+- Results depend on the JSearch API (not all jobs may be fully remote).
+- Location filtering is by country code, not city. For city, include it in your keywords.
+- Intended for educational and personal use.
 
 ---
 
 ## License
 
-MIT License © \Mervine Muganguzi
+MIT License © Mervine Muganguzi
 
 ---
 
 ## Contact
 
-For questions or suggestions, please open an issue or contact \[mervinemuganguzi1@outlook.com (mailto:mervinemuganguzi1@outlook.com)].
+For questions or suggestions, please open an issue or contact [mervinemuganguzi1@outlook.com](mailto:mervinemuganguzi1@outlook.com).
 
 ---
-
-Happy job hunting! 🚀
-
-```
-
-```
