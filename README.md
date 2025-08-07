@@ -21,8 +21,8 @@ No scraping, no audio dependencies, just fast API-powered job search!
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/Dev_Job_Scraper.git
-   cd Dev_Job_Scraper
+   git clone https://github.com/yourusername/dev_job_scraper.git
+   cd dev_job_scraper
    ```
 
 2. **(Optional) Create and activate a virtual environment:**
