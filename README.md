@@ -2,7 +2,7 @@
 
 A modern Python app to search remote jobs worldwide using the [JSearch API](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch/).  
 Includes a Gradio web interface and CSV export.  
-No scraping, no audio dependencies, just fast API-powered job search!
+Just fast API-powered job search!
 
 ---
 
@@ -21,8 +21,8 @@ No scraping, no audio dependencies, just fast API-powered job search!
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/dev_job_scraper.git
-   cd dev_job_scraper
+   git clone https://github.com/yourusername/dev-job-scraper.git
+   cd dev-job-scraper
    ```
 
 2. **(Optional) Create and activate a virtual environment:**
