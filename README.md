@@ -21,7 +21,7 @@ Just fast API-powered job search!
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/dev-job-scraper.git
+   git clone https://github.com/MerveilleDivine/dev-job-scraper.git
    cd dev-job-scraper
    ```
 
