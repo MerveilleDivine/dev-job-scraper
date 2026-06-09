@@ -1,10 +1,10 @@
 """CSV export helpers."""
 
-from collections.abc import Iterable
 import csv
+import re
+from collections.abc import Iterable
 from datetime import datetime
 from pathlib import Path
-import re
 
 from dev_job_finder.models import Job
 
