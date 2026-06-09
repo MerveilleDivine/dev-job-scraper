@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dev-job-finder"
+version = "0.1.0"
+description = "API-powered remote developer job finder with CLI, Gradio UI, and CSV export."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Mervine Muganguzi" }
+]
+dependencies = [
+  "gradio>=4.32.0",
+  "pandas>=2.1.4",
+  "python-dotenv>=1.0.1",
+  "requests>=2.32.3"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "ruff>=0.8.0"
+]
+
+[project.scripts]
+dev-job-finder = "dev_job_finder.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
