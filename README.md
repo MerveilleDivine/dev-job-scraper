@@ -2,7 +2,7 @@
 
 A Python-based remote developer job search tool that uses the JSearch API to fetch job listings, normalize results, display them in a Gradio web interface, and export clean CSV files for personal job tracking.
 
-This project started as a small job scraper and has been refactored into a more professional API-powered portfolio project with a clearer architecture, safer configuration, tests, and a recruiter-friendly README.
+The project started as a small job scraper and has been refactored into a structured API-powered application with clearer architecture, safer configuration, tests, and CI.
 
 ## Why this project matters
 
@@ -45,21 +45,16 @@ Searching for remote developer roles often means repeating the same searches, op
 
 ```text
 .
-├── src/
-│   └── dev_job_finder/
-│       ├── app.py          # Gradio web interface
-│       ├── cli.py          # Command-line entry point
-│       ├── client.py       # JSearch API client and validation
-│       ├── config.py       # Environment-based settings
-│       ├── exceptions.py   # Project-specific exceptions
-│       ├── exporter.py     # CSV export helpers
-│       └── models.py       # Normalized Job model
+├── src/dev_job_finder/
+│   ├── app.py
+│   ├── cli.py
+│   ├── client.py
+│   ├── config.py
+│   ├── exceptions.py
+│   ├── exporter.py
+│   └── models.py
 ├── tests/
-│   ├── test_client.py
-│   └── test_exporter.py
 ├── code/
-│   ├── app.py              # Backwards-compatible web wrapper
-│   └── scraper.py          # Backwards-compatible CLI wrapper
 ├── .github/workflows/ci.yml
 ├── .env.example
 ├── pyproject.toml
@@ -69,16 +64,9 @@ Searching for remote developer roles often means repeating the same searches, op
 
 ## Installation
 
-### 1. Clone the repository
-
 ```bash
 git clone https://github.com/MerveilleDivine/dev-job-scraper.git
 cd dev-job-scraper
-```
-
-### 2. Create and activate a virtual environment
-
-```bash
 python -m venv .venv
 ```
 
@@ -94,9 +82,7 @@ macOS/Linux:
 source .venv/bin/activate
 ```
 
-### 3. Install the project
-
-For normal usage:
+Install the project:
 
 ```bash
 pip install -e .
@@ -108,12 +94,6 @@ For development, tests, and linting:
 pip install -e ".[dev]"
 ```
 
-You can also install the runtime dependencies directly:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Configuration
 
 Create a `.env` file in the project root:
@@ -122,31 +102,23 @@ Create a `.env` file in the project root:
 RAPIDAPI_KEY=your_rapidapi_key_here
 ```
 
-You can get a key from the JSearch API page on RapidAPI.
-
 For backwards compatibility, the app also accepts `API_KEY`, but `RAPIDAPI_KEY` is preferred because it is more explicit.
 
 ## Usage
 
 ### Web app
 
-Run the Gradio interface:
-
 ```bash
 python -m dev_job_finder.app
 ```
 
-Or use the backwards-compatible wrapper:
+Backwards-compatible wrapper:
 
 ```bash
 python code/app.py
 ```
 
-The web app lets you enter keywords, choose the number of result pages, optionally add a country code, and download the results as a CSV file.
-
 ### CLI
-
-Run a search from the terminal:
 
 ```bash
 dev-job-finder "remote python" --pages 2 --country us
@@ -164,12 +136,6 @@ Save to a custom CSV file:
 dev-job-finder "backend engineer" --pages 2 --country gb --output exports/backend_uk.csv
 ```
 
-Search worldwide by leaving country blank:
-
-```bash
-dev-job-finder "remote react" --country ""
-```
-
 Use date filtering:
 
 ```bash
@@ -185,7 +151,7 @@ dev-job-finder "python developer" --date-posted week
 
 ## Error handling
 
-The project handles common failure cases in a user-friendly way:
+The project handles common failure cases:
 
 - Missing RapidAPI key.
 - Invalid country code.
@@ -197,28 +163,19 @@ The project handles common failure cases in a user-friendly way:
 
 ## Testing
 
-Run the test suite:
-
 ```bash
 pytest
-```
-
-Run linting:
-
-```bash
 ruff check .
 ```
 
 ## Roadmap
-
-Planned improvements that would make this project even stronger:
 
 - Add job deduplication by source job ID and apply link.
 - Add a local search history database.
 - Add optional JSON export.
 - Add saved searches.
 - Add skill-based matching score.
-- Add a recruiter-ready demo GIF to the README.
+- Add a demo GIF to the README.
 - Add a small dashboard showing result counts by company, country, and date.
 
 ## Limitations
@@ -226,12 +183,8 @@ Planned improvements that would make this project even stronger:
 - Results depend on the JSearch API and may not include every remote job available online.
 - Some listings may be remote, hybrid, or location-specific depending on source data.
 - Country filtering depends on the API response and is not the same as city-level filtering.
-- This project is intended for educational, portfolio, and personal job-search workflows.
+- This project is intended for educational and personal job-search workflows.
 
 ## License
 
 MIT License © Mervine Muganguzi
-
-## Contact
-
-For questions or suggestions, please open an issue or contact [mervinemuganguzi1@outlook.com](mailto:mervinemuganguzi1@outlook.com).
