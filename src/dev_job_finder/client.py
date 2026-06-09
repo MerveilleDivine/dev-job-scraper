@@ -22,7 +22,9 @@ def normalize_country(country: str | None) -> str:
         return ""
 
     if len(normalized) != 2 or not normalized.isalpha():
-        raise ValidationError("Country must be a 2-letter ISO code such as us, gb, ca, or ae.")
+        raise ValidationError(
+            "Country must be a 2-letter ISO code such as us, gb, ca, or ae."
+        )
 
     return normalized
 
@@ -39,7 +41,9 @@ def validate_pages(pages: int) -> int:
         raise ValidationError("Pages must be at least 1.")
 
     if value > MAX_RESULT_PAGES:
-        raise ValidationError(f"Pages cannot exceed {MAX_RESULT_PAGES} for safe API usage.")
+        raise ValidationError(
+            f"Pages cannot exceed {MAX_RESULT_PAGES} for safe API usage."
+        )
 
     return value
 
@@ -85,7 +89,11 @@ def deduplicate_jobs(jobs: list[Job]) -> list[Job]:
 class JSearchClient:
     """Small client around the JSearch API."""
 
-    def __init__(self, settings: Settings | None = None, session: requests.Session | None = None):
+    def __init__(
+        self,
+        settings: Settings | None = None,
+        session: requests.Session | None = None,
+    ):
         self.settings = settings or load_settings()
         self.session = session or requests.Session()
 
@@ -125,7 +133,9 @@ class JSearchClient:
                 timeout=self.settings.request_timeout,
             )
         except requests.RequestException as exc:
-            raise ApiError("Unable to reach the job search API. Check your connection.") from exc
+            raise ApiError(
+                "Unable to reach the job search API. Check your connection."
+            ) from exc
 
         self._raise_for_status(response)
 
@@ -149,9 +159,13 @@ class JSearchClient:
             raise ApiError("RapidAPI rejected the request. Check your RAPIDAPI_KEY value.")
 
         if response.status_code == 429:
-            raise ApiError("RapidAPI rate limit reached. Try again later or reduce the search size.")
+            raise ApiError(
+                "RapidAPI rate limit reached. Try again later or reduce the search size."
+            )
 
         try:
             response.raise_for_status()
         except requests.HTTPError as exc:
-            raise ApiError(f"Job search API request failed with status {response.status_code}.") from exc
+            raise ApiError(
+                f"Job search API request failed with status {response.status_code}."
+            ) from exc
