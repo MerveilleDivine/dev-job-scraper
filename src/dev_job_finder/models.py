@@ -25,11 +25,12 @@ class Job:
         state = payload.get("job_state") or ""
         country = payload.get("job_country") or ""
         location_parts = [part for part in (city, state, country) if part]
+        location = ", ".join(location_parts) or payload.get("job_location") or "Remote/Not specified"
 
         return cls(
             title=payload.get("job_title") or "",
             company=payload.get("employer_name") or "",
-            location=", ".join(location_parts) or payload.get("job_location") or "Remote/Not specified",
+            location=location,
             country=country,
             link=payload.get("job_apply_link") or payload.get("job_google_link") or "",
             date_posted=payload.get("job_posted_at_datetime_utc") or "",
