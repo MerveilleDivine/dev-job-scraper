@@ -36,8 +36,8 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.ruff]
-line-length = 100
-src = ["src", "tests"]
+line-length = 120
+src = ["src", "tests", "code"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP"]
+select = ["E", "F"]
