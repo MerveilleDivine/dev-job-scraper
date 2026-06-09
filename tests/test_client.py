@@ -1,5 +1,5 @@
-import requests
 import pytest
+import requests
 
 from dev_job_finder.client import JSearchClient
 from dev_job_finder.config import Settings
