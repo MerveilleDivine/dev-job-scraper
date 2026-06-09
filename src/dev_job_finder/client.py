@@ -76,7 +76,8 @@ def deduplicate_jobs(jobs: list[Job]) -> list[Job]:
     seen = set()
 
     for job in jobs:
-        key = job.job_id or job.link or f"{job.title}|{job.company}|{job.location}".lower()
+        fallback_key = f"{job.title}|{job.company}|{job.location}".lower()
+        key = job.job_id or job.link or fallback_key
         if key in seen:
             continue
 
@@ -142,13 +143,19 @@ class JSearchClient:
         try:
             payload = response.json()
         except ValueError as exc:
-            raise ApiError("The job search API returned an invalid JSON response.") from exc
+            raise ApiError(
+                "The job search API returned an invalid JSON response."
+            ) from exc
 
         data = payload.get("data", [])
         if not isinstance(data, list):
             raise ApiError("The job search API returned an unexpected response format.")
 
-        jobs = [Job.from_api_payload(item) for item in data if isinstance(item, dict)]
+        jobs = [
+            Job.from_api_payload(item)
+            for item in data
+            if isinstance(item, dict)
+        ]
         return deduplicate_jobs(jobs)
 
     @staticmethod
@@ -156,7 +163,9 @@ class JSearchClient:
         """Translate HTTP failures into clearer application errors."""
 
         if response.status_code in {401, 403}:
-            raise ApiError("RapidAPI rejected the request. Check your RAPIDAPI_KEY value.")
+            raise ApiError(
+                "RapidAPI rejected the request. Check your RAPIDAPI_KEY value."
+            )
 
         if response.status_code == 429:
             raise ApiError(
