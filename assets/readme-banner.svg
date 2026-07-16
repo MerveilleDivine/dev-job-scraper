@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Remote Job Search</title>
+  <desc id="desc">Black and white banner for a Python remote-job search client.</desc>
+  <rect width="1200" height="300" rx="24" fill="#090909"/>
+  <path d="M0 252H1200M0 48H1200" stroke="#262626"/>
+  <text x="64" y="78" fill="#A3A3A3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="3">PYTHON · API CLIENT · GRADIO</text>
+  <text x="62" y="142" fill="#FAFAFA" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1">Remote Job Search</text>
+  <text x="64" y="184" fill="#BDBDBD" font-family="Inter, Arial, sans-serif" font-size="18">Search the JSearch API from a CLI or browser interface, then export the results.</text>
+  <g transform="translate(64 214)">
+    <rect width="560" height="38" rx="6" fill="none" stroke="#525252"/>
+    <circle cx="22" cy="19" r="7" fill="none" stroke="#D4D4D4" stroke-width="2"/>
+    <line x1="27" y1="24" x2="33" y2="30" stroke="#D4D4D4" stroke-width="2"/>
+    <text x="48" y="24" fill="#A3A3A3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">backend engineer · remote</text>
+  </g>
+  <g transform="translate(686 214)" fill="#D4D4D4">
+    <rect width="128" height="8" rx="4"/><rect y="16" width="82" height="6" rx="3" fill="#737373"/>
+    <rect x="160" width="128" height="8" rx="4"/><rect x="160" y="16" width="96" height="6" rx="3" fill="#737373"/>
+    <rect x="320" width="128" height="8" rx="4"/><rect x="320" y="16" width="74" height="6" rx="3" fill="#737373"/>
+  </g>
+</svg>
