@@ -67,8 +67,8 @@ The rows above illustrate the output format; they are not live search results.
 ## Quick start
 
 ```bash
-git clone https://github.com/MerveilleDivine/dev-job-scraper.git
-cd dev-job-scraper
+git clone https://github.com/MerveilleDivine/remote-job-search.git
+cd remote-job-search
 
 python -m venv .venv
 source .venv/bin/activate
@@ -150,7 +150,7 @@ The GUI starts with a blank country value, which requests worldwide results.
 ## Repository map
 
 ```text
-dev-job-scraper/
+remote-job-search/
 ├── assets/readme-banner.svg
 ├── code/
 │   ├── app.py
